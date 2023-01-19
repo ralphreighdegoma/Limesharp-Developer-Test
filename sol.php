@@ -52,7 +52,7 @@ function multiply($power) {
     return $value[$power - 1];
 }
 
-function binaryToDecimal($binary) {
+function nextBinaryDecimal($binary) {
 
     //convert it to decimal
     $sum = 0;
@@ -62,6 +62,18 @@ function binaryToDecimal($binary) {
         $counter++;
     }
 
-    echo $sum;
+    $sum++;
 
+    return $sum;
+}
+
+
+function next_binary_number($decimal) {
+    $decimal = nextBinaryDecimal($decimal);
+    $binary = [];
+    while($decimal > 0) {
+        array_unshift($binary, $decimal % 2);
+        $decimal = floor($decimal / 2);
+    }
+    echo json_encode($binary);
 }
